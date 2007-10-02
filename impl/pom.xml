@@ -22,7 +22,7 @@
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-uctsitemanage</artifactId>
       <version>${sakai.version}</version>
-      <path>../pom.xml</path>
+      <relativePath>../pom.xml</relativePath>
    </parent>
 
    <dependencies>
