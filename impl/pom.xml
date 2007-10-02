@@ -21,7 +21,8 @@
    <parent>
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-uctsitemanage</artifactId>
-      <version>M2</version>
+      <version>${sakai.version}</version>
+      <path>../pom.xml</path>
    </parent>
 
    <dependencies>
