@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="org.sakaiproject.sitemanage.api.SectionFieldProvider"
+			class="org.sakaiproject.sitemanage.impl.SectionFieldProviderImpl"
+			init-method="init"
+			destroy-method="destroy"
+			singleton="true">
+	</bean>
+	
+	<bean id="org.sakaiproject.sitemanage.api.AffiliatedSectionProvider"
+			class="org.sakaiproject.sitemanage.impl.AffiliatedSectionProviderImpl"
+			init-method="init"
+			destroy-method="destroy"
+			singleton="true">
+	</bean>
+	
+
+</beans>

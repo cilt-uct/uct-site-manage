@@ -3,15 +3,15 @@
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <name>Sakai Uctsitemanage Implementation</name>
-   <groupId>org.sakaiproject.uctsitemanage</groupId>
-   <artifactId>uctsitemanage-impl</artifactId>
+   <groupId>org.sakaiproject</groupId>
+   <artifactId>sakai-uctsitemanage-impl</artifactId>
    <organization>
       <name>Sakai Project</name>
       <url>http://sakaiproject.org/</url>
    </organization>
    <inceptionYear>2007</inceptionYear>
-   <description>Uctsitemanage implementation</description>
-   <version>0.1</version>
+   <description>uctsitemanage implementation</description>
+   <version>${sakai.version}</version>
    <packaging>jar</packaging>
    <properties>
       <deploy.target />
@@ -20,8 +20,8 @@
    <!-- the base is parent -->
    <parent>
       <groupId>org.sakaiproject</groupId>
-      <artifactId>uctsitemanage</artifactId>
-      <version>0.1</version>
+      <artifactId>sakai-uctsitemanage</artifactId>
+      <version>M2</version>
    </parent>
 
    <dependencies>
@@ -63,14 +63,33 @@
          <artifactId>sakai-user-api</artifactId>
          <version>${sakai.version}</version>
       </dependency>
-
       <dependency>
-         <groupId>org.sakaiproject</groupId>
-         <artifactId>sakai-util-api</artifactId>
-         <version>${sakai.version}</version>
+      	<groupId>org.sakaiproject</groupId>
+      	<artifactId>sakai-common-edu-person-api</artifactId>
+      	<version>${sakai.version}</version>
+	 </dependency>
+      <dependency>
+      	<groupId>org.sakaiproject</groupId>
+      	<artifactId>sakai-coursemanagement-api</artifactId>
+      	<version>${sakai.version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.sakaiproject</groupId>
+      	<artifactId>sakai-common-type-api</artifactId>
+      	<version>${sakai.version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.sakaiproject</groupId>
+      	<artifactId>sakai-common-manager-api</artifactId>
+      	<version>${sakai.version}</version>
+      </dependency>
+      <dependency>
+      	<groupId>org.sakaiproject</groupId>
+      	<artifactId>sakai-util-api</artifactId>
+      	<version>${sakai.version}</version>
       </dependency>
 
-     <dependency>
+      <dependency>
      	<groupId>commons-logging</groupId>
      	<artifactId>commons-logging</artifactId>
      	<version>1.0.4</version>

@@ -5,14 +5,14 @@
    <modelVersion>4.0.0</modelVersion>
    <name>Sakai Uctsitemanage</name>
    <groupId>org.sakaiproject</groupId>
-   <artifactId>uctsitemanage</artifactId>
+   <artifactId>sakai-uctsitemanage</artifactId>
    <organization>
       <name>Sakai Project</name>
       <url>http://sakaiproject.org/</url>
    </organization>
    <inceptionYear>2007</inceptionYear>
    <packaging>pom</packaging>
-   <version>0.1</version>
+   <version>${sakai.version}</version>
 
   <parent>
     <artifactId>master</artifactId>
@@ -24,6 +24,7 @@
 
    <modules>
       <module>impl</module>
+      <module>pack</module>
    </modules>
 
 </project>
