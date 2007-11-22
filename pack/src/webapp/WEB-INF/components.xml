@@ -18,11 +18,12 @@
 	</bean>
 	
 	<bean id="org.sakaiproject.sitemanage.api.UserNotificationProvider" 
-		class="org.sakaiproject.sitemanage.impl.UserNotificationProviderImpl"
+		class="org.sakaiproject.uctsitemanage.UserNotificationProviderImpl"
 		init-method="init"
 		singleton="true" >
 		<property name="emailService" ref="org.sakaiproject.email.api.EmailService"/>
 		<property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService"/>
 		<property name="serverConfigurationService" ref="org.sakaiproject.component.api.ServerConfigurationService"/>
+		<property name="sqlService" ref="org.sakaiproject.db.api.SqlService"/>
 	</bean>
 </beans>
