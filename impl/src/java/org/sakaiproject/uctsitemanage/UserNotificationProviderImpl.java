@@ -76,7 +76,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 			String headerTo = emailId;
 			String replyTo = emailId;
 			String message_subject = productionSiteName + " "
-					+ rb.getString("java.sitenoti");
+					+ "Site Notification";
 			String content = "";
 			/*
 			 * $userName
@@ -90,6 +90,8 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	    				"ui.service", ""));
 	            replacementValues.put("currentUserName",userDirectoryService.getCurrentUser().getDisplayName());
 	            replacementValues.put("localSakaiUrl", serverConfigurationService.getPortalUrl());
+	            replacementValues.put("siteName", siteTitle);
+	            
 	            		
 			content = TextTemplateLogicUtils.processTextTemplate(template, replacementValues);
 			emailService.send(from, to, message_subject, content, headerTo,
@@ -113,7 +115,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		String headerTo = newUserEmail;
 		String replyTo = newUserEmail;
 		String message_subject = productionSiteName + " "
-				+ rb.getString("java.newusernoti");
+				+ "new user notification";
 		String content = "";
 
 		String template = this.getTemplate("notifyNewUserEmai");
@@ -134,6 +136,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            replacementValues.put("currentUserName",userDirectoryService.getCurrentUser().getDisplayName());
 	            replacementValues.put("localSakaiUrl", serverConfigurationService.getPortalUrl());
 	            replacementValues.put("newPassword",newUserPassword);
+	            replacementValues.put("siteName", siteTitle);
 	            		
 			content = TextTemplateLogicUtils.processTextTemplate(template, replacementValues);
 			emailService.send(from, to, message_subject, content, headerTo,
