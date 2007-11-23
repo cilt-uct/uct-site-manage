@@ -61,7 +61,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		//we need to get the template
 		
 
-		String template = this.getTemplate("notifyAddedParticipant");
+		EmailTemplate template = this.getTemplate("notifyAddedParticipant");
 		if (template == null)
 			return;
 		if (from != null) {
@@ -75,8 +75,9 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 			String to = emailId;
 			String headerTo = emailId;
 			String replyTo = emailId;
-			String message_subject = productionSiteName + " "
-					+ "Site Notification";
+			Map<String, String> rv = new HashMap<String, String>();
+			rv.put("productionSiteName", productionSiteName);
+			String message_subject = TextTemplateLogicUtils.processTextTemplate(template.getSubject(), rv);   
 			String content = "";
 			/*
 			 * $userName
@@ -93,7 +94,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            replacementValues.put("siteName", siteTitle);
 	            
 	            		
-			content = TextTemplateLogicUtils.processTextTemplate(template, replacementValues);
+			content = TextTemplateLogicUtils.processTextTemplate(template.getBody(), replacementValues);
 			emailService.send(from, to, message_subject, content, headerTo,
 					replyTo, null);
 
@@ -114,11 +115,14 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		String to = newUserEmail;
 		String headerTo = newUserEmail;
 		String replyTo = newUserEmail;
-		String message_subject = productionSiteName + " "
-				+ "new user notification";
+		
+		EmailTemplate template = this.getTemplate("notifyNewUserEmai");
+		Map<String, String> rv = new HashMap<String, String>();
+		rv.put("productionSiteName", productionSiteName);
+		String message_subject = TextTemplateLogicUtils.processTextTemplate(template.getSubject(), rv); 
 		String content = "";
 
-		String template = this.getTemplate("notifyNewUserEmai");
+		
 		if (template == null)
 			return;
 		
@@ -138,7 +142,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            replacementValues.put("newPassword",newUserPassword);
 	            replacementValues.put("siteName", siteTitle);
 	            		
-			content = TextTemplateLogicUtils.processTextTemplate(template, replacementValues);
+			content = TextTemplateLogicUtils.processTextTemplate(template.getBody(), replacementValues);
 			emailService.send(from, to, message_subject, content, headerTo,
 					replyTo, null);
 		}
@@ -159,15 +163,17 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		return from;
 	}
 	
-	private String getTemplate(String templateKey) {
+	private EmailTemplate getTemplate(String templateKey) {
 		
 		Object[] fields = new Object[]{templateKey};
-		String sql = "SELECT template from UCT_EMAIL where TEMPLATEKEY= ?";
+		String sql = "SELECT subject,template from UCT_EMAIL where TEMPLATEKEY= ?";
 		List results = sqlService.dbRead(sql, fields, new SqlReader(){
 			public Object readSqlResultRecord(ResultSet result) {
-				String rv = null;
+				EmailTemplate rv = null;
 				try {
-					rv = result.getString(1);
+					 
+					rv.setSubject(result.getString(1));
+					rv.setBody(result.getString(2));
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -181,7 +187,35 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 			M_log.error("No template found for: notifyAddedParticipant");
 			return null;
 		} 
-		return (String)results.get(0);
+		return (EmailTemplate)results.get(0);
+		
+	}
+	
+	private class EmailTemplate {
+		
+		private String id;
+		private String subject;
+		private String body;
+		
+		public String getBody() {
+			return body;
+		}
+		public void setBody(String body) {
+			this.body = body;
+		}
+		public String getId() {
+			return id;
+		}
+		public void setId(String id) {
+			this.id = id;
+		}
+		public String getSubject() {
+			return subject;
+		}
+		public void setSubject(String subject) {
+			this.subject = subject;
+		}
+		
 		
 	}
 }
