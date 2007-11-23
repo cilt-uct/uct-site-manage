@@ -5,7 +5,7 @@
      subject text,
      Index  (templateKey)
      );
-insert into UCT_EMAIL(templateKey,subject, template) values ('notifyNewUserEmail','$productionSiteName Site Notification'
+insert into UCT_EMAIL(templateKey,subject, template) values ('notifyNewUserEmail','$productionSiteName Site Notification',
 '$userName,
 
 You have been added to the $localSakaiName ($localSakaiUrl) by $currentUserName.
@@ -17,7 +17,7 @@ $newPassword
 You can later go to the Account tool in your My Workspace site to reset it.');
 
 
-insert into UCT_EMAIL(templateKey,subject,template) values ('notifyAddedParticipant','$productionSiteName New User Notification'
+insert into UCT_EMAIL(templateKey,subject,template) values ('notifyAddedParticipant','$productionSiteName New User Notification',
 'Dear $userName,
 
 You have been added to the following $localSakaiName site:
@@ -26,6 +26,6 @@ by $currentUserName.
 
 To log in:
 1. In your internet browser open $localSakaiName: $localSakaiUrl
-2. At the top of the page type your username and password, and then click 'Login'.
-3. ou can now access your site either by clicking on the Site Name, which appears as a tab in a row across the upper part of your screen.
+2. At the top of the page type your username and password, and then click ''Login''.
+3. You can now access your site either by clicking on the Site Name, which appears as a tab in a row across the upper part of your screen.
 ');
