@@ -11,7 +11,7 @@
 	</bean>
 	
 	<bean id="org.sakaiproject.sitemanage.api.AffiliatedSectionProvider"
-			class="org.sakaiproject.sitemanage.impl.AffiliatedSectionProviderImpl"
+			class="org.sakaiproject.uctsitemanage.UCTSectionProvider"
 			init-method="init"
 			destroy-method="destroy"
 			singleton="true">
