@@ -15,6 +15,9 @@
 			init-method="init"
 			destroy-method="destroy"
 			singleton="true">
+			<property name="sakaiPersonManager" ref="org.sakaiproject.api.common.edu.person.SakaiPersonManager"/>
+			<property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService" />
+			<property name="courseManagementService" ref="org.sakaiproject.coursemanagement.api.CourseManagementService" />
 	</bean>
 	
 	<bean id="org.sakaiproject.sitemanage.api.UserNotificationProvider" 
@@ -25,5 +28,6 @@
 		<property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService"/>
 		<property name="serverConfigurationService" ref="org.sakaiproject.component.api.ServerConfigurationService"/>
 		<property name="sqlService" ref="org.sakaiproject.db.api.SqlService"/>
+		
 	</bean>
 </beans>

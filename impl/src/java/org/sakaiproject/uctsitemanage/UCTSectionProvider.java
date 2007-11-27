@@ -33,9 +33,15 @@ public class UCTSectionProvider implements AffiliatedSectionProvider {
 			String academicSessionEid) {
 		log.debug("Geting Instructor sets for: " + userId);
 		String dept = getUserDept(userId);
+		log.debug("got department: " + dept);
 		List ret = null;
+		if (dept == null)
+			return ret;
+		
 		if (cms.isCourseSetDefined(dept)) {
-		Set offerings = cms.getCourseOfferingsInCourseSet(dept);
+			log.debug("found courseSet: " );
+			Set offerings = cms.getCourseOfferingsInCourseSet(dept);
+		
 		ret = new ArrayList();
 		Iterator i = offerings.iterator();
 		while (i.hasNext()) {
@@ -68,8 +74,10 @@ public class UCTSectionProvider implements AffiliatedSectionProvider {
      */
     private String getUserDept(String userId) {
     	log.debug(this +" looking for department for " + userId);
-    	if (sakaiPersonManager == null)
+    	if (sakaiPersonManager == null) {
+    		log.warn("SakaipersonManager is not defined");
     		return null;
+    	}
     	
     	try {
     		Type _type = sakaiPersonManager.getSystemMutableType();
@@ -81,6 +89,7 @@ public class UCTSectionProvider implements AffiliatedSectionProvider {
     				log.debug(this + "found department " + dept);
     				return dept;
     			} else {
+    				log.debug("user department is null!");
     				return null;
     			}
     		}
