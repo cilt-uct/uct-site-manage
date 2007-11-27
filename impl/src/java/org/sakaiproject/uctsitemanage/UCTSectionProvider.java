@@ -39,7 +39,7 @@ public class UCTSectionProvider implements AffiliatedSectionProvider {
 			return ret;
 		
 		if (cms.isCourseSetDefined(dept)) {
-			log.debug("found courseSet: " );
+			log.debug("found courseSet: "  + dept);
 			Set offerings = cms.getCourseOfferingsInCourseSet(dept);
 		
 		ret = new ArrayList();
@@ -47,7 +47,13 @@ public class UCTSectionProvider implements AffiliatedSectionProvider {
 		while (i.hasNext()) {
 			CourseOffering co = (CourseOffering)i.next();
 			Set en = cms.getSections(co.getEid());
-			ret.addAll(en);
+			//we need to iterate through this list
+			Iterator it = en.iterator();
+			while (it.hasNext()) {
+				Section sec = (Section)it.next();
+				ret.add(sec.getEid());
+			}
+			
 		}
 		}
 		return ret;
