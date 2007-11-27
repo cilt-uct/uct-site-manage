@@ -3,7 +3,7 @@
 
 <beans>
 
-	<bean id="org.sakaiproject.sitemanage.api.SectionFieldProvider"
+	<bean id="org.sakaiproject.uctsitemanage.SectionFieldProvider"
 			class="org.sakaiproject.sitemanage.impl.SectionFieldProviderImpl"
 			init-method="init"
 			destroy-method="destroy"
