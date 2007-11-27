@@ -21,6 +21,14 @@ import org.sakaiproject.user.api.UserDirectoryService;
 public class UCTSectionProvider implements AffiliatedSectionProvider {
 
 	private static final Log log = LogFactory.getLog(UCTSectionProvider.class);
+
+	public void init() {
+		log.info("init()");
+	}
+	
+	public void destroy() {
+		log.info("destroy()");
+	}
 	public List getAffiliatedSectionEids(String userId,
 			String academicSessionEid) {
 		log.debug("Geting Instructor sets for: " + userId);
