@@ -116,7 +116,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		String headerTo = newUserEmail;
 		String replyTo = newUserEmail;
 		
-		EmailTemplate template = this.getTemplate("notifyNewUserEmai");
+		EmailTemplate template = this.getTemplate("notifyNewUserEmail");
 		Map<String, String> rv = new HashMap<String, String>();
 		rv.put("productionSiteName", productionSiteName);
 		String message_subject = TextTemplateLogicUtils.processTextTemplate(template.getSubject(), rv); 
