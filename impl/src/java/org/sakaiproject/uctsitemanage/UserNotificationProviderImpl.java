@@ -184,7 +184,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		});
 		
 		if (results.size()==0) {
-			M_log.error("No template found for: notifyAddedParticipant");
+			M_log.error("No template found for: " + templateKey);
 			return null;
 		} 
 		return (EmailTemplate)results.get(0);
