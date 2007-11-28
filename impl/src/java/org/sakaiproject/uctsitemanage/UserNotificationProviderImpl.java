@@ -166,14 +166,14 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	private EmailTemplate getTemplate(String templateKey) {
 		
 		Object[] fields = new Object[]{templateKey};
-		String sql = "SELECT subject,template from UCT_EMAIL where TEMPLATEKEY= ?";
+		String sql = "SELECT subject,template from UCT_EMAIL where TEMPLATEKEY= '" + templateKey + "'";
 		List results = sqlService.dbRead(sql, fields, new SqlReader(){
 			public Object readSqlResultRecord(ResultSet result) {
 				EmailTemplate rv = null;
 				try {
 					 
-					rv.setSubject(result.getString(1));
-					rv.setBody(result.getString(2));
+					rv.setSubject(result.getString("subject"));
+					rv.setBody(result.getString("template"));
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
