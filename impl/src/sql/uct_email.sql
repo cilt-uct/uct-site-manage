@@ -44,3 +44,18 @@ To log in:
 2. At the top of the page type your username and password, and then click ''Login''.
 3. You can now access your site either by clicking on the Site Name, which appears as a tab in a row across the upper part of your screen.
 ', now());
+
+
+insert into EMAIL_TEMPLATE_ITEM(templateKey,subject,template, last_modified) values ('sitemanage.notifyAddedParticipant','$productionSiteName New User Notification',
+'Dear $userName,
+
+You have been added to the following $localSakaiName site:
+$siteName
+by $currentUserName.
+
+To log in:
+1. In your internet browser open $localSakaiName: $localSakaiUrl
+2. At the top of the page type your username and password, and then click ''Login''.
+3. You can now access your site either by clicking on the Site Name, which appears as a tab in a row across the upper part of your screen.
+',now());
+

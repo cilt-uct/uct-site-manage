@@ -98,6 +98,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            replacementValues.put("currentUserName",userDirectoryService.getCurrentUser().getDisplayName());
 	            replacementValues.put("localSakaiUrl", serverConfigurationService.getPortalUrl());
 	            replacementValues.put("siteName", siteTitle);
+	            replacementValues.put("productionSiteName", productionSiteName);
 	            
 				
 				/*
@@ -107,9 +108,15 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 				String message_subject = TextTemplateLogicUtils.processTextTemplate(template.getSubject(), rv);
 				*/
 	            M_log.info("getting template: sitemange.notifyAddedParticipant");
-				RenderedTemplate template = emailTemplateService.getRenderedTemplate("sitemange.notifyAddedParticipant", null, replacementValues); 
+	            RenderedTemplate template = null;
+	           try { 
+				template = emailTemplateService.getRenderedTemplate("sitemange.notifyAddedParticipant", null, replacementValues); 
 				if (template == null)
 					return;	
+	           }
+	           catch (Exception e) {
+	        	   e.printStackTrace();
+	           }
 			//content = TextTemplateLogicUtils.processTextTemplate(template.getBody(), replacementValues);
 			content = template.getRenderedMessage();	
 			emailService.send(from, to, template.getRenderedSubject(), content, headerTo,
@@ -184,59 +191,6 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		return from;
 	}
 	
-	private EmailTemplate getTemplate(String templateKey) {
-		
-		Object[] fields = new Object[]{templateKey};
-		String sql = "SELECT subject,template from UCT_EMAIL where TEMPLATEKEY= '" + templateKey + "'";
-		List results = sqlService.dbRead(sql, fields, new SqlReader(){
-			public Object readSqlResultRecord(ResultSet result) {
-				EmailTemplate rv = null;
-				try {
-					 
-					rv.setSubject(result.getString("subject"));
-					rv.setBody(result.getString("template"));
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return rv;
-			}
-			
-		});
-		
-		if (results.size()==0) {
-			M_log.error("No template found for: " + templateKey);
-			return null;
-		} 
-		return (EmailTemplate)results.get(0);
-		
-	}
 	
-	private class EmailTemplate {
-		
-		private String id;
-		private String subject;
-		private String body;
-		
-		public String getBody() {
-			return body;
-		}
-		public void setBody(String body) {
-			this.body = body;
-		}
-		public String getId() {
-			return id;
-		}
-		public void setId(String id) {
-			this.id = id;
-		}
-		public String getSubject() {
-			return subject;
-		}
-		public void setSubject(String subject) {
-			this.subject = subject;
-		}
-		
-		
-	}
+	
 }
