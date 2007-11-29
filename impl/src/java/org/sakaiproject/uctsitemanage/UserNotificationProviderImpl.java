@@ -108,7 +108,8 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 				*/
 	            M_log.info("getting template: sitemange.notifyAddedParticipant");
 				RenderedTemplate template = emailTemplateService.getRenderedTemplate("sitemange.notifyAddedParticipant", null, replacementValues); 
-					
+				if (template == null)
+					return;	
 			//content = TextTemplateLogicUtils.processTextTemplate(template.getBody(), replacementValues);
 			content = template.getRenderedMessage();	
 			emailService.send(from, to, template.getRenderedSubject(), content, headerTo,
@@ -139,8 +140,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		String content = "";
 
 		
-		if (template == null)
-			return;
+	
 		
 		if (from != null && newUserEmail != null) {
 			/*
@@ -159,7 +159,9 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            replacementValues.put("siteName", siteTitle);
 	            replacementValues.put("productionSiteName", productionSiteName);
 	        RenderedTemplate template = emailTemplateService.getRenderedTemplate("sitemanage.key", null, replacementValues);    		
-			content = template.getRenderedMessage();
+	    	if (template == null)
+				return;
+	        content = template.getRenderedMessage();
 			
 			String message_subject = template.getRenderedSubject();
 			emailService.send(from, to, message_subject, content, headerTo,
