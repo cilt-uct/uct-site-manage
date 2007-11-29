@@ -12,6 +12,8 @@ import org.sakaiproject.component.api.ServerConfigurationService;
 import org.sakaiproject.db.api.SqlReader;
 import org.sakaiproject.db.api.SqlService;
 import org.sakaiproject.email.api.EmailService;
+import org.sakaiproject.emailtemplateservice.model.RenderedTemplate;
+import org.sakaiproject.emailtemplateservice.service.EmailTemplateService;
 import org.sakaiproject.sitemanage.api.UserNotificationProvider;
 import org.sakaiproject.user.api.User;
 import org.sakaiproject.user.api.UserDirectoryService;
@@ -44,6 +46,11 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		sqlService = ss;
 	}
 	
+	private EmailTemplateService emailTemplateService;
+	public void setEmailTemplateService(EmailTemplateService ets) {
+		emailTemplateService = ets;
+	}
+	
 	
 	/** portlet configuration parameter values* */
 	/** Resource bundle using current language locale */
@@ -61,9 +68,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		//we need to get the template
 		
 
-		EmailTemplate template = this.getTemplate("notifyAddedParticipant");
-		if (template == null)
-			return;
+
 		if (from != null) {
 			String productionSiteName = serverConfigurationService.getString(
 					"ui.service", "");
@@ -77,7 +82,8 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 			String replyTo = emailId;
 			Map<String, String> rv = new HashMap<String, String>();
 			rv.put("productionSiteName", productionSiteName);
-			String message_subject = TextTemplateLogicUtils.processTextTemplate(template.getSubject(), rv);   
+
+			
 			String content = "";
 			/*
 			 * $userName
@@ -93,9 +99,19 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            replacementValues.put("localSakaiUrl", serverConfigurationService.getPortalUrl());
 	            replacementValues.put("siteName", siteTitle);
 	            
-	            		
-			content = TextTemplateLogicUtils.processTextTemplate(template.getBody(), replacementValues);
-			emailService.send(from, to, message_subject, content, headerTo,
+				
+				/*
+				EmailTemplate template = this.getTemplate("notifyAddedParticipant");
+				if (template == null)
+					return;
+				String message_subject = TextTemplateLogicUtils.processTextTemplate(template.getSubject(), rv);
+				*/
+	            M_log.info("getting template: sitemange.notifyAddedParticipant");
+				RenderedTemplate template = emailTemplateService.getRenderedTemplate("sitemange.notifyAddedParticipant", null, replacementValues); 
+					
+			//content = TextTemplateLogicUtils.processTextTemplate(template.getBody(), replacementValues);
+			content = template.getRenderedMessage();	
+			emailService.send(from, to, template.getRenderedSubject(), content, headerTo,
 					replyTo, null);
 
 		} // if
@@ -116,10 +132,10 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 		String headerTo = newUserEmail;
 		String replyTo = newUserEmail;
 		
-		EmailTemplate template = this.getTemplate("notifyNewUserEmail");
-		Map<String, String> rv = new HashMap<String, String>();
-		rv.put("productionSiteName", productionSiteName);
-		String message_subject = TextTemplateLogicUtils.processTextTemplate(template.getSubject(), rv); 
+		
+		
+		
+		 
 		String content = "";
 
 		
@@ -141,8 +157,11 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            replacementValues.put("localSakaiUrl", serverConfigurationService.getPortalUrl());
 	            replacementValues.put("newPassword",newUserPassword);
 	            replacementValues.put("siteName", siteTitle);
-	            		
-			content = TextTemplateLogicUtils.processTextTemplate(template.getBody(), replacementValues);
+	            replacementValues.put("productionSiteName", productionSiteName);
+	        RenderedTemplate template = emailTemplateService.getRenderedTemplate("sitemanage.key", null, replacementValues);    		
+			content = template.getRenderedMessage();
+			
+			String message_subject = template.getRenderedSubject();
 			emailService.send(from, to, message_subject, content, headerTo,
 					replyTo, null);
 		}
