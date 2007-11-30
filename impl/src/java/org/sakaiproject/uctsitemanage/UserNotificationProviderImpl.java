@@ -165,7 +165,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            replacementValues.put("newPassword",newUserPassword);
 	            replacementValues.put("siteName", siteTitle);
 	            replacementValues.put("productionSiteName", productionSiteName);
-	        RenderedTemplate template = emailTemplateService.getRenderedTemplate("sitemanage.key", null, replacementValues);    		
+	        RenderedTemplate template = emailTemplateService.getRenderedTemplate("sitemanage.notifyNewUserEmail", null, replacementValues);    		
 	    	if (template == null)
 				return;
 	        content = template.getRenderedMessage();
