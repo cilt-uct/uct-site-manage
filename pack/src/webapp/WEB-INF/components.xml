@@ -4,7 +4,7 @@
 <beans>
 
 	<bean id="org.sakaiproject.uctsitemanage.SectionFieldProvider"
-			class="org.sakaiproject.sitemanage.impl.SectionFieldProviderImpl"
+			class="org.sakaiproject.uctsitemanage.SectionFieldManagerImpl"
 			init-method="init"
 			destroy-method="destroy"
 			singleton="true">
