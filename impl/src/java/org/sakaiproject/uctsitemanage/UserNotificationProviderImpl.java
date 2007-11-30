@@ -1,7 +1,5 @@
 package org.sakaiproject.uctsitemanage;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,8 +7,6 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.sakaiproject.component.api.ServerConfigurationService;
-import org.sakaiproject.db.api.SqlReader;
-import org.sakaiproject.db.api.SqlService;
 import org.sakaiproject.email.api.EmailService;
 import org.sakaiproject.emailtemplateservice.model.RenderedTemplate;
 import org.sakaiproject.emailtemplateservice.service.EmailTemplateService;
@@ -39,11 +35,6 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	private UserDirectoryService userDirectoryService;
 	public void setUserDirectoryService(UserDirectoryService uds) {
 		userDirectoryService = uds;
-	}
-	
-	private SqlService sqlService;
-	public void setSqlService(SqlService ss) {
-		sqlService = ss;
 	}
 	
 	private EmailTemplateService emailTemplateService;
@@ -99,15 +90,8 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            replacementValues.put("localSakaiUrl", serverConfigurationService.getPortalUrl());
 	            replacementValues.put("siteName", siteTitle);
 	            replacementValues.put("productionSiteName", productionSiteName);
-	            
-				
-				/*
-				EmailTemplate template = this.getTemplate("notifyAddedParticipant");
-				if (template == null)
-					return;
-				String message_subject = TextTemplateLogicUtils.processTextTemplate(template.getSubject(), rv);
-				*/
-	            M_log.info("getting template: sitemange.notifyAddedParticipant");
+	         
+	            M_log.debug("getting template: sitemange.notifyAddedParticipant");
 	            RenderedTemplate template = null;
 	           try { 
 				template = emailTemplateService.getRenderedTemplateForUser("sitemange.notifyAddedParticipant", user, replacementValues); 
@@ -117,7 +101,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	           catch (Exception e) {
 	        	   e.printStackTrace();
 	           }
-			//content = TextTemplateLogicUtils.processTextTemplate(template.getBody(), replacementValues);
+			
 			content = template.getRenderedMessage();	
 			emailService.send(from, to, template.getRenderedSubject(), content, headerTo,
 					replyTo, null);
