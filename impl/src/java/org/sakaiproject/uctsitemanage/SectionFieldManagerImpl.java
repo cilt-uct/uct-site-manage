@@ -64,6 +64,7 @@ public class SectionFieldManagerImpl implements SectionFieldProvider {
 	}
 
 	public void init() {
+		log.info("init()");
 	}
 
 	public void destroy() {
