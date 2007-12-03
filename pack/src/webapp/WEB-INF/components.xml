@@ -29,4 +29,18 @@
 		<property name="serverConfigurationService" ref="org.sakaiproject.component.api.ServerConfigurationService"/>
 		<property name="emailTemplateService" ref="org.sakaiproject.emailtemplateservice.service.EmailTemplateService"/>
 	</bean>
+	
+	
+	<bean id="org.sakaiproject.api.common.edu.person.PhotoService"
+		class="org.sakaiproject.uct.profile.FileSystemMultiFolderPhotoService"
+		init-method="init">
+		<property name="serverConfigurationService">
+			<ref
+				bean="org.sakaiproject.component.api.ServerConfigurationService" />
+		</property>
+		<property name="userDirectoryService">
+			<ref bean="org.sakaiproject.user.api.UserDirectoryService" />
+		</property>
+	</bean>
+
 </beans>
