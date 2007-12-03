@@ -126,7 +126,9 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 			FileOutputStream fileOutput = null;
 			try {
 				String eid = userDirectoryService.getUserEid(uid);
-				String photoPath = photoRepositoryPath+"/" + this.getFolderName(eid) + "/" + eid + ".jpg";
+				String photoPath = photoRepositoryPath+"/" + this.getFolderName(eid);
+				checkCreateFolder(photoPath);
+				photoPath = photoPath + "/" + eid + ".jpg";
 				fileOutput = new FileOutputStream(photoPath);
 				fileOutput.write(photo);
 			}
@@ -159,6 +161,13 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 			ret = ref.substring(0, 1);
 		
 		return ret;
+		
+	}
+	
+	private void checkCreateFolder(String path) {
+		
+		if (!new File(path).exists())
+			new File(path).mkdir();
 		
 	}
 }
