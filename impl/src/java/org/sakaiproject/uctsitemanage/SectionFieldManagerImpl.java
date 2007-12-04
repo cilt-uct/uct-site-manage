@@ -38,8 +38,8 @@ public class SectionFieldManagerImpl implements SectionFieldProvider {
 		List<SectionField> fieldList = new ArrayList<SectionField>();
 
 		fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_subject"), null, 8));
-		fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_course"), null, 5));
-		fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_section"), null, 3));		
+		//fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_course"), null, 5));
+		//fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_section"), null, 3));		
 		
 		return fieldList;
 	}
