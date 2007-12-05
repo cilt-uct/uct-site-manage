@@ -37,7 +37,7 @@ public class SectionFieldManagerImpl implements SectionFieldProvider {
 		ResourceLoader resourceLoader = new ResourceLoader("SectionFields");
 		List<SectionField> fieldList = new ArrayList<SectionField>();
 
-		fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_subject"), null, 8));
+		fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_course_code"), null, 8));
 		//fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_course"), null, 5));
 		//fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_section"), null, 3));		
 		
