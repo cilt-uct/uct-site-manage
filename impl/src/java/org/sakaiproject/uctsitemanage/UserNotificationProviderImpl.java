@@ -84,6 +84,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 			 */
 			 Map<String, String> replacementValues = new HashMap<String, String>();
 	            replacementValues.put("userName", user.getDisplayName());
+	            replacementValues.put("userEid", user.getEid());
 	            replacementValues.put("localSakaiName",serverConfigurationService.getString(
 	    				"ui.service", ""));
 	            replacementValues.put("currentUserName",userDirectoryService.getCurrentUser().getDisplayName());
