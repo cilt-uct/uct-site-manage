@@ -8,7 +8,7 @@ You have been added to the following ${localSakaiName} site:
 ${siteName}
 by ${currentUserName}.
 
-To go to this site, login to ${localSakaiName} at $localSakaiUrl with your username (${userName}) and password.
+To go to this site, login to ${localSakaiName} at ${localSakaiUrl} with your username (${userName}) and password.
 
 You can then access the site by clicking on the site name, which appears as a tab in a row across the top part of the page, or selecting the site from the drop-down list on the right.
 
@@ -23,7 +23,7 @@ The Vula Team, University of Cape Town', now());
 insert into EMAIL_TEMPLATE_ITEM(template_Key,subject, message, last_modified) values ('sitemanage.notifyNewUserEmail','${productionSiteName} Site Notification',
 'Dear ${userName},
 
-You have been added to ${localSakaiName} (${localSakaiUrl}) by $currentUserName (${currentUserEmail}).
+You have been added to ${localSakaiName} (${localSakaiUrl}) by ${currentUserName} (${currentUserEmail}).
 
 Your username is: ${userName}
 Your password is: ${newPassword}
