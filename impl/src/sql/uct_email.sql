@@ -1,7 +1,7 @@
 
 #delete from EMAIL_TEMPLATE_ITEM;
 
-insert into EMAIL_TEMPLATE_ITEM(template_Key,subject,message, last_modified) values ('sitemange.notifyAddedParticipant','${productionSiteName} New User Notification',
+insert into EMAIL_TEMPLATE_ITEM(template_Key,subject,message, last_modified) values ('sitemange.notifyAddedParticipant','${productionSiteName} Site Notification',
 'Dear ${userName},
 
 You have been added to the following ${localSakaiName} site:
@@ -20,7 +20,7 @@ Regards
 The Vula Team, University of Cape Town', now());
 
 
-insert into EMAIL_TEMPLATE_ITEM(template_Key,subject, message, last_modified) values ('sitemanage.notifyNewUserEmail','${productionSiteName} Site Notification',
+insert into EMAIL_TEMPLATE_ITEM(template_Key,subject, message, last_modified) values ('sitemanage.notifyNewUserEmail','${productionSiteName} New User Notification',
 'Dear ${userName},
 
 You have been added to ${localSakaiName} (${localSakaiUrl}) by ${currentUserName} (${currentUserEmail}).
