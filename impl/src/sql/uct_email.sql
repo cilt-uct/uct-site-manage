@@ -12,7 +12,9 @@ To go to this site, login to ${localSakaiName} at ${localSakaiUrl} with your use
 
 You can then access the site by clicking on the site name, which appears as a tab in a row across the top part of the page, or selecting the site from the drop-down list on the right.
 
-If you have any questions about ${localSakaiName} or how to access this site, please feel free to contact the ${localSakaiName} helpdesk by replying to this email or emailing help@vula.uct.ac.za.
+If you cannot log in to ${localSakaiName}, please see http://vula.uct.ac.za/password/ for details on how to reset your password.
+
+If you have any further questions about ${localSakaiName} or how to access this site, please feel free to contact the ${localSakaiName} helpdesk by replying to this email or emailing help@vula.uct.ac.za.
 
 Online help is also available by clicking on the Help link in any page.
 
