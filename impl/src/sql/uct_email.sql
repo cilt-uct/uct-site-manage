@@ -1,5 +1,6 @@
+set autocommit=0;
 
-#delete from EMAIL_TEMPLATE_ITEM;
+delete from EMAIL_TEMPLATE_ITEM;
 
 insert into EMAIL_TEMPLATE_ITEM(template_Key,subject,message, last_modified) values ('sitemange.notifyAddedParticipant','${productionSiteName} Site Notification',
 'Dear ${userName},
@@ -38,3 +39,5 @@ Online help is also available by clicking on the Help link on any page.
 
 Regards
 The Vula team, University of Cape Town', now());
+
+commit;
