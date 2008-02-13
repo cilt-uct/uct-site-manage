@@ -10,7 +10,7 @@ You have been added to the following ${localSakaiName} site:
 ${siteName}
 by ${currentUserName}.
 
-To go to this site, login to ${localSakaiName} at ${localSakaiUrl} with your username (${userName}) and password.
+To go to this site, login to ${localSakaiName} at ${localSakaiUrl} with your username (${userEid}) and password.
 
 You can then access the site by clicking on the site name, which appears as a tab in a row across the top part of the page, or selecting the site from the drop-down list on the right.
 
