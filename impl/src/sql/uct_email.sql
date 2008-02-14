@@ -8,7 +8,7 @@ insert into EMAIL_TEMPLATE_ITEM (template_Key,subject,message, last_modified)
 
 You have been added to the following ${localSakaiName} site:
 ${siteName}
-by ${currentUserName}.
+by ${currentUserName} (${currentUserEmail}).
 
 To go to this site, login to ${localSakaiName} at ${localSakaiUrl} with your username (${userEid}) and password.
 
