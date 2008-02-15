@@ -12,7 +12,7 @@ by ${currentUserName} (${currentUserEmail}).
 
 To go to this site, login to ${localSakaiName} at ${localSakaiUrl} with your username (${userEid}) and password.
 
-You can then access the site by clicking on the site name, which appears as a tab in a row across the top part of the page, or by clicking on 'My Active Sites' on the top right.
+You can then access the site by clicking on the site name, which appears as a tab in a row across the top part of the page, or by clicking on "My Active Sites" on the top right.
 
 If you cannot login to ${localSakaiName}, please see http://vula.uct.ac.za/password/ for details on how to reset your password.
 
