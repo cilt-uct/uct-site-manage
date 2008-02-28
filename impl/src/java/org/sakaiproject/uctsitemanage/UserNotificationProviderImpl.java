@@ -1,5 +1,6 @@
 package org.sakaiproject.uctsitemanage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -102,10 +103,12 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	           catch (Exception e) {
 	        	   e.printStackTrace();
 	           }
+			List headers = new ArrayList();
+			headers.add("Precedence: bulk");
 			
 			content = template.getRenderedMessage();	
 			emailService.send(from, to, template.getRenderedSubject(), content, headerTo,
-					replyTo, null);
+					replyTo, headers);
 
 		} // if
 
@@ -156,8 +159,10 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	        content = template.getRenderedMessage();
 			
 			String message_subject = template.getRenderedSubject();
+			List headers = new ArrayList();
+			headers.add("Precedence: bulk");
 			emailService.send(from, to, message_subject, content, headerTo,
-					replyTo, null);
+					replyTo, headers);
 		}
 	}
 
