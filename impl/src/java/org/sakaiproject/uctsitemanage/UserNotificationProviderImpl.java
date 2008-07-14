@@ -96,7 +96,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            M_log.debug("getting template: sitemange.notifyAddedParticipant");
 	            RenderedTemplate template = null;
 	           try { 
-				template = emailTemplateService.getRenderedTemplateForUser("sitemange.notifyAddedParticipant", user, replacementValues); 
+				template = emailTemplateService.getRenderedTemplateForUser("sitemange.notifyAddedParticipant", user.getId(), replacementValues); 
 				if (template == null)
 					return;	
 	           }
@@ -153,7 +153,7 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	            replacementValues.put("newPassword",newUserPassword);
 	            replacementValues.put("siteName", siteTitle);
 	            replacementValues.put("productionSiteName", productionSiteName);
-	        RenderedTemplate template = emailTemplateService.getRenderedTemplateForUser("sitemanage.notifyNewUserEmail", user, replacementValues);    		
+	        RenderedTemplate template = emailTemplateService.getRenderedTemplateForUser("sitemanage.notifyNewUserEmail", user.getId(), replacementValues);    		
 	    	if (template == null)
 				return;
 	        content = template.getRenderedMessage();
