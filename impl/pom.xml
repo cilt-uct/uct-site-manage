@@ -21,7 +21,7 @@
 	</organization>
 	<inceptionYear>2007</inceptionYear>
 	<description>uctsitemanage implementation</description>
-	<version>${sakai.version}</version>
+	
 	<packaging>jar</packaging>
 	<properties>
 		<deploy.target />
@@ -75,7 +75,7 @@
 		<dependency>
 			<groupId>org.sakaiproject.emailtemplateservice</groupId>
 			<artifactId>emailtemplateservice-api</artifactId>
-			<version>0.1</version>
+			<version>0.2</version>
 		</dependency>
 	    <dependency>
 			<groupId>commons-logging</groupId>
