@@ -40,6 +40,11 @@
 			<version>2.6.0RC1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.sakaiproject.emailtemplateservice</groupId>
+			<artifactId>emailtemplateservice-api</artifactId>
+			<version>0.2-SNAPSHOT</version>
+		</dependency>
 		</dependencies>
 	</dependencyManagement>
 
