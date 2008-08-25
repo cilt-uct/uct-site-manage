@@ -63,8 +63,8 @@ public class SectionFieldManagerImpl implements SectionFieldProvider {
 		return sectionEid;
 	}
 
-	public String getSectionTitle(String eid ,List fields) {
-		return null;
+	public String getSectionTitle(String eid ,List<SectionField> fields) {
+		return getSectionEid(eid, fields);
 		
 	}
 	
