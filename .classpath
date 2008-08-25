@@ -10,5 +10,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/site-manage-impl"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/emailtemplateservice"/>
 	<classpathentry kind="var" path="M2_REPO/org/sakaiproject/kernel/sakai-kernel-api/1.0RC2-SNAPSHOT/sakai-kernel-api-1.0RC2-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/sakaiproject/kernel/sakai-kernel-util/1.0RC2-SNAPSHOT/sakai-kernel-util-1.0RC2-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
