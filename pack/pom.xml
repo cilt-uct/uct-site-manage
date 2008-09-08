@@ -24,8 +24,7 @@
       <groupId>org.sakaiproject</groupId>
       <artifactId>sakai-uctsitemanage-impl</artifactId>
     </dependency>
-
-  </dependencies>
+ </dependencies>
   <build>
     <resources>
       <resource>
