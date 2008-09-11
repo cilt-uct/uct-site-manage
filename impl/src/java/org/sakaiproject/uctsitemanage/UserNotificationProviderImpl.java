@@ -14,7 +14,6 @@ import org.sakaiproject.emailtemplateservice.service.EmailTemplateService;
 import org.sakaiproject.sitemanage.api.UserNotificationProvider;
 import org.sakaiproject.user.api.User;
 import org.sakaiproject.user.api.UserDirectoryService;
-import org.sakaiproject.util.ResourceLoader;
 
 
 
@@ -44,10 +43,6 @@ public class UserNotificationProviderImpl implements UserNotificationProvider {
 	}
 	
 	
-	/** portlet configuration parameter values* */
-	/** Resource bundle using current language locale */
-	private static ResourceLoader rb = new ResourceLoader("UserNotificationProvider");
-
 	public void init() {
 		//nothing realy to do
 		M_log.info("init()");
