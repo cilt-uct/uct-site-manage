@@ -1,7 +1,6 @@
 package org.sakaiproject.uctsitemanage;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -34,21 +33,21 @@ public class UCTSectionProvider implements AffiliatedSectionProvider {
 		log.debug("Geting Instructor sets for: " + userId);
 		String dept = getUserDept(userId);
 		log.debug("got department: " + dept);
-		List ret = null;
+		List<String> ret = null;
 		if (dept == null)
 			return ret;
 		
 		if (cms.isCourseSetDefined(dept)) {
 			log.debug("found courseSet: "  + dept);
-			Set offerings = cms.getCourseOfferingsInCourseSet(dept);
+			Set<CourseOffering> offerings = cms.getCourseOfferingsInCourseSet(dept);
 		
-		ret = new ArrayList();
-		Iterator i = offerings.iterator();
+		ret = new ArrayList<String>();
+		Iterator<CourseOffering> i = offerings.iterator();
 		while (i.hasNext()) {
 			CourseOffering co = (CourseOffering)i.next();
-			Set en = cms.getSections(co.getEid());
+			Set<Section> en = cms.getSections(co.getEid());
 			//we need to iterate through this list
-			Iterator it = en.iterator();
+			Iterator<Section> it = en.iterator();
 			while (it.hasNext()) {
 				Section sec = (Section)it.next();
 				ret.add(sec.getEid());
@@ -88,7 +87,7 @@ public class UCTSectionProvider implements AffiliatedSectionProvider {
     	try {
     		Type _type = sakaiPersonManager.getSystemMutableType();
     		User user = userDirectoryService.getUserByEid(userId);
-    		if (user.getType().equals("staff")) {
+    		if ("staff".equals(user.getType())) {
     			SakaiPerson sakaiPerson = sakaiPersonManager.getSakaiPerson(user.getId(), _type);
     			String dept = sakaiPerson.getOrganizationalUnit();
     			if (dept != null) {	
