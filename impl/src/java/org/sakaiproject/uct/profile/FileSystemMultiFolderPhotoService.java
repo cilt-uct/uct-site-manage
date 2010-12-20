@@ -47,6 +47,7 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 	
 	public void init() {
 		photoRepositoryPath = serverConfigurationService.getString("profile.photoRepositoryPath", null);
+		LOG.info("init() photoPath: " + photoRepositoryPath);
 	}
 	
 	public byte[] getPhotoAsByteArray(String userId) {
