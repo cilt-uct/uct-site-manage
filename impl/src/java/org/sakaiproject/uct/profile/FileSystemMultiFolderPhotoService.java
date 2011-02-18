@@ -102,7 +102,7 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 		
 				} catch (FileNotFoundException e) {
 					// file not found, this user does not have a photo ID on file
-					LOG.debug("FileNotFoundException: "+e);
+					LOG.info("FileNotFoundException: " + e);
 				} catch (IOException e) {
 					LOG.error("IOException: "+e);
 				} catch (UserNotDefinedException e) {
@@ -120,6 +120,7 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 	}
 	
 	private void savePhotoToDiskRepository(byte[] photo, String uid) {
+		LOG.debug("savePhotoToDiskRepository for " + uid);
 		if (photoRepositoryPath != null ) {
 			if (photo == null || photo.length == 0)
 				return;
