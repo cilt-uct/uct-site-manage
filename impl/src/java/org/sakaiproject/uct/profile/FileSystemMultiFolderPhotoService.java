@@ -174,6 +174,12 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 			new File(path).mkdir();
 		
 	}
+	
+	
+	@Override
+	public boolean overRidesDefault() {
+		return true;
+	}
 }
 
 
