@@ -128,10 +128,12 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 			try {
 				String eid = userDirectoryService.getUserEid(uid);
 				String photoPath = photoRepositoryPath+"/" + this.getFolderName(eid);
+				LOG.debug("writing file to: " + photoPath);
 				checkCreateFolder(photoPath);
 				photoPath = photoPath + "/" + eid + ".jpg";
 				fileOutput = new FileOutputStream(photoPath);
 				fileOutput.write(photo);
+				LOG.debug("done writing file");
 			}
 			catch (UserNotDefinedException e) {
 				LOG.debug("UserNotDefinedException: "+e);
