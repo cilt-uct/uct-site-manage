@@ -102,7 +102,7 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 		
 				} catch (FileNotFoundException e) {
 					// file not found, this user does not have a photo ID on file
-					LOG.info("FileNotFoundException: " + e);
+					LOG.debug("FileNotFoundException: " + e);
 				} catch (IOException e) {
 					LOG.error("IOException: "+e);
 				} catch (UserNotDefinedException e) {
