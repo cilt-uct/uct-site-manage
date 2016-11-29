@@ -13,16 +13,14 @@
 	</organization>
 	<inceptionYear>2007</inceptionYear>
 	<packaging>pom</packaging>
-	<version>0.2-SNAPSHOT</version>
+	<version>11-SNAPSHOT</version>
 
 	<parent>
 		<artifactId>master</artifactId>
 		<groupId>org.sakaiproject</groupId>
-		<version>10-SNAPSHOT</version>
+		<version>11-SNAPSHOT</version>
 		<relativePath>../master/pom.xml</relativePath>
 	</parent>
-
-
 	<modules>
 		<module>impl</module>
 		<module>pack</module>
@@ -32,25 +30,23 @@
 			<dependency>
 				<groupId>org.sakaiproject</groupId>
 				<artifactId>sakai-uctsitemanage-impl</artifactId>
-				<version>0.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-			<groupId>org.sakaiproject.sitemanage</groupId>
-			<artifactId>sakai-site-manage-impl</artifactId>
-			<version>10-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.sakaiproject.sitemanage</groupId>
-			<artifactId>sakai-site-manage-api</artifactId>
-			<version>10-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.sakaiproject.emailtemplateservice</groupId>
-			<artifactId>emailtemplateservice-api</artifactId>
-			<version>0.5.4</version>
-		</dependency>
+				<groupId>org.sakaiproject.sitemanage</groupId>
+				<artifactId>sakai-site-manage-impl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.sakaiproject.sitemanage</groupId>
+				<artifactId>sakai-site-manage-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.sakaiproject.emailtemplateservice</groupId>
+				<artifactId>emailtemplateservice-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 </project>
