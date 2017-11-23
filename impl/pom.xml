@@ -27,15 +27,15 @@
 	<!-- Various Sakai dependencies -->
 		<dependency>
 			<groupId>org.sakaiproject.sitemanage</groupId>
-			<artifactId>sakai-site-manage-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.sakaiproject.kernel</groupId>
-			<artifactId>sakai-kernel-util</artifactId>
+                        <artifactId>sakai-site-manage-impl</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.sakaiproject.sitemanage</groupId>
 			<artifactId>sakai-site-manage-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-kernel-util</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.sakaiproject.kernel</groupId>
