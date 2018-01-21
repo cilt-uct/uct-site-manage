@@ -27,7 +27,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.sakaiproject.sitemanage.api.SectionField;
 import org.sakaiproject.sitemanage.api.SectionFieldProvider;
-import org.sakaiproject.sitemanage.impl.SectionFieldImpl;
 import org.sakaiproject.util.ResourceLoader;
 
 public class SectionFieldManagerImpl implements SectionFieldProvider {
@@ -38,8 +37,6 @@ public class SectionFieldManagerImpl implements SectionFieldProvider {
 		List<SectionField> fieldList = new ArrayList<SectionField>();
 
 		fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_course_code"), null, 8));
-		//fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_course"), null, 5));
-		//fieldList.add(new SectionFieldImpl(resourceLoader.getString("required_fields_section"), null, 3));		
 		
 		return fieldList;
 	}
