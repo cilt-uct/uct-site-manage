@@ -5,8 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.sakaiproject.api.common.edu.person.SakaiPerson;
 import org.sakaiproject.api.common.edu.person.SakaiPersonManager;
 import org.sakaiproject.api.common.type.Type;
@@ -17,9 +15,11 @@ import org.sakaiproject.sitemanage.api.AffiliatedSectionProvider;
 import org.sakaiproject.user.api.User;
 import org.sakaiproject.user.api.UserDirectoryService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class UCTSectionProvider implements AffiliatedSectionProvider {
 
-	private static final Log log = LogFactory.getLog(UCTSectionProvider.class);
 
 	public void init() {
 		log.info("init()");
@@ -100,7 +100,7 @@ public class UCTSectionProvider implements AffiliatedSectionProvider {
     		}
     	}
     	catch (Exception e) {
-    		e.printStackTrace();
+    		log.warn(e.getLocalizedMessage(), e);
     	}
     	return null;
     	

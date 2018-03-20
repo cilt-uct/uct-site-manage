@@ -6,15 +6,16 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.sakaiproject.api.common.edu.person.BasePhotoService;
 import org.sakaiproject.component.api.ServerConfigurationService;
 import org.sakaiproject.user.api.UserDirectoryService;
 import org.sakaiproject.user.api.UserNotDefinedException;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class FileSystemMultiFolderPhotoService extends BasePhotoService {
-	private static final Log LOG = LogFactory.getLog(FileSystemMultiFolderPhotoService.class);
+
 	
 	private String photoRepositoryPath = null;
 	
@@ -35,9 +36,9 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 	 */
 	public void setUserDirectoryService(UserDirectoryService userDirectoryService)
 	{
-		if (LOG.isDebugEnabled())
+		if (log.isDebugEnabled())
 		{
-			LOG.debug("setUserDirectoryService(userDirectoryService " + userDirectoryService + ")");
+			log.debug("setUserDirectoryService(userDirectoryService " + userDirectoryService + ")");
 		}
 
 		this.userDirectoryService = userDirectoryService;
@@ -47,12 +48,12 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 	
 	public void init() {
 		photoRepositoryPath = serverConfigurationService.getString("profile.photoRepositoryPath", null);
-		LOG.info("init() photoPath: " + photoRepositoryPath);
+		log.info("init() photoPath: " + photoRepositoryPath);
 	}
 	
 	public byte[] getPhotoAsByteArray(String userId) {
 		// TODO Auto-generated method stub
-		LOG.debug("getPhotoAsByteArray(" + userId +") repo path" + this.photoRepositoryPath );
+		log.debug("getPhotoAsByteArray(" + userId +") repo path" + this.photoRepositoryPath );
 		return this.getInstitutionalPhotoFromDiskRespository(userId);
 	}
 
@@ -65,7 +66,7 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 	
 	private byte[] getInstitutionalPhotoFromDiskRespository(String uid) {
 		
-		LOG.debug("fetching photo's from: " + photoRepositoryPath);
+		log.debug("fetching photo's from: " + photoRepositoryPath);
 			if(photoRepositoryPath != null) {
 				
 				FileInputStream fileInput = null;
@@ -76,7 +77,7 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 					
 					String photoPath = photoRepositoryPath+"/" + this.getFolderName(eid) + "/"  +eid+".jpg";
 					
-					LOG.debug("Get photo from disk: "+photoPath);
+					log.debug("Get photo from disk: "+photoPath);
 				
 					File file = new File(photoPath);
 				
@@ -102,17 +103,17 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 		
 				} catch (FileNotFoundException e) {
 					// file not found, this user does not have a photo ID on file
-					LOG.debug("FileNotFoundException: " + e);
+					log.debug("FileNotFoundException: " + e);
 				} catch (IOException e) {
-					LOG.error("IOException: "+e);
+					log.error("IOException: "+e);
 				} catch (UserNotDefinedException e) {
-					LOG.debug("UserNotDefinedException: "+e);
+					log.debug("UserNotDefinedException: "+e);
 				} finally {
 					// Close the input stream 
 			        try {
 			        	if(fileInput != null) fileInput.close();
 					} catch (IOException e) {
-						LOG.error("Exception in finally block: "+e);
+						log.error("Exception in finally block: "+e);
 					}
 				}
 			}
@@ -120,7 +121,7 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 	}
 	
 	private void savePhotoToDiskRepository(byte[] photo, String uid) {
-		LOG.debug("savePhotoToDiskRepository for " + uid);
+		log.debug("savePhotoToDiskRepository for " + uid);
 		if (photoRepositoryPath != null ) {
 			if (photo == null || photo.length == 0)
 				return;
@@ -129,26 +130,26 @@ public class FileSystemMultiFolderPhotoService extends BasePhotoService {
 			try {
 				String eid = userDirectoryService.getUserEid(uid);
 				String photoPath = photoRepositoryPath+"/" + this.getFolderName(eid);
-				LOG.debug("writing file to: " + photoPath);
+				log.debug("writing file to: " + photoPath);
 				checkCreateFolder(photoPath);
 				photoPath = photoPath + "/" + eid + ".jpg";
 				fileOutput = new FileOutputStream(photoPath);
 				fileOutput.write(photo);
-				LOG.debug("done writing file");
+				log.debug("done writing file");
 			}
 			catch (UserNotDefinedException e) {
-				LOG.debug("UserNotDefinedException: "+e);
+				log.debug("UserNotDefinedException: "+e);
 			} catch (FileNotFoundException e) {
 				// file not found, this user does not have a photo ID on file
-				LOG.debug("FileNotFoundException: "+e);
+				log.debug("FileNotFoundException: "+e);
 			} catch (IOException e) {
-				LOG.error("IOException: "+e);
+				log.error("IOException: "+e);
 			} finally {
 				// Close the input stream 
 		        try {
 		        	if(fileOutput != null) fileOutput.close();
 				} catch (IOException e) {
-					LOG.error("Exception in finally block: "+e);
+					log.error("Exception in finally block: "+e);
 				}
 			}
 			
