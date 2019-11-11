@@ -5,8 +5,9 @@
                       http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<name>UCT Site Manage Modules</name>
-	<groupId>org.sakaiproject</groupId>
+	<groupId>org.sakaiproject.uctsitemanage</groupId>
 	<artifactId>sakai-uctsitemanage</artifactId>
+	<version>19-SNAPSHOT</version>
 	<organization>
 		<name>Sakai Project</name>
 		<url>http://sakaiproject.org/</url>
@@ -17,7 +18,7 @@
 	<parent>
 		<artifactId>master</artifactId>
 		<groupId>org.sakaiproject</groupId>
-		<version>12-SNAPSHOT</version>
+		<version>19-SNAPSHOT</version>
 		<relativePath>../master/pom.xml</relativePath>
 	</parent>
 	<modules>

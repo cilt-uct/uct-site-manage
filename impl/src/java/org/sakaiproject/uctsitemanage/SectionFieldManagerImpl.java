@@ -23,14 +23,15 @@ package org.sakaiproject.uctsitemanage;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.sakaiproject.sitemanage.api.SectionField;
 import org.sakaiproject.sitemanage.api.SectionFieldProvider;
 import org.sakaiproject.util.ResourceLoader;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class SectionFieldManagerImpl implements SectionFieldProvider {
-	private static final Log log = LogFactory.getLog(SectionFieldManagerImpl.class);
+	
 
 	public List<SectionField> getRequiredFields() {
 		ResourceLoader resourceLoader = new ResourceLoader("SectionFields");
