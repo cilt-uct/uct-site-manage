@@ -7,7 +7,7 @@
 	<name>UCT Site Manage Modules</name>
 	<groupId>org.sakaiproject.uctsitemanage</groupId>
 	<artifactId>sakai-uctsitemanage</artifactId>
-	<version>20-SNAPSHOT</version>
+	<version>21-SNAPSHOT</version>
 	<organization>
 		<name>Sakai Project</name>
 		<url>http://sakaiproject.org/</url>
@@ -18,7 +18,7 @@
 	<parent>
 		<artifactId>master</artifactId>
 		<groupId>org.sakaiproject</groupId>
-		<version>20-SNAPSHOT</version>
+		<version>21-SNAPSHOT</version>
 		<relativePath>../master/pom.xml</relativePath>
 	</parent>
 	<modules>
